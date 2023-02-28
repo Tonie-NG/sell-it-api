@@ -1,22 +1,37 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const ReviewSchema = new Schema(
+const OrderSchema = new Schema(
   {
-    orderId: {
+    courseId: {
       type: String,
       required: true,
     },
-    userId: {
+    img: {
+      type: String,
+      required: false,
+    },
+    title: {
       type: String,
       required: true,
     },
-    star: {
+    price: {
       type: Number,
       required: true,
-      enum: [1, 2, 3, 4, 5],
     },
-    desc: {
+    sellerId: {
+      type: String,
+      required: true,
+    },
+    buyerId: {
+      type: String,
+      required: true,
+    },
+    isCompleted: {
+      type: Boolean,
+      default: false,
+    },
+    payment_intent: {
       type: String,
       required: true,
     },
@@ -26,4 +41,4 @@ const ReviewSchema = new Schema(
   }
 );
 
-export default mongoose.model("Review", ReviewSchema);
+export default mongoose.model("Order", OrderSchema);
